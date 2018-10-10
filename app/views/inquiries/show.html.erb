@@ -1,0 +1,36 @@
+<head>
+  <style>
+    #notice {
+      color: red;
+      font-size: large;
+    }
+    #main {
+      text-indent: 30px;
+      color: darkblue;
+    }
+  </style>
+</head>
+<h1>Showing inquiry</h1>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Subject :</b>
+  <%= @inquiry.subject %>
+</p>
+
+<p>
+  <b>Message content</b>
+  <%= @inquiry.message_content %>
+</p>
+
+
+
+<br>
+
+  <%= link_to 'Edit',  edit_inquiry_path(@inquiry) %>
+
+<br>
+<br>
+
+<%= link_to 'Go back to homepage', '/homepage' %> |

@@ -1,0 +1,26 @@
+<h1>Listing Real estate companies</h1>
+<p id="notice"><%= notice %></p>
+<table>
+  <tr>
+    <th> Company name </th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% if !@companies.nil? then @companies.each do |company| %>
+      <tr>
+        <td><%= company.company_name %></td>
+        <td><%= link_to 'Show', company %></td>
+        <% if session[:user_type] =="admin"%>
+        <td><%= link_to 'Edit', edit_real_estate_company_path(company) %></td>
+        <td><%= link_to 'Delete', company, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+          <%end %>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
+
+<br />
+
+    <%= link_to 'Go back to homepage ', homepage_path %>

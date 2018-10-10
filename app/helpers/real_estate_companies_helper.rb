@@ -1,0 +1,2 @@
+module RealEstateCompaniesHelper
+end

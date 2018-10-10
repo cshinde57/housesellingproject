@@ -1,0 +1,36 @@
+<h1>---- Create an inquiry ----</h1>
+<br>
+<% if @inquiry.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@inquiry.errors.count, "error") %> prohibited
+      this article from being saved:
+    </h2>
+    <ul>
+      <% @inquiry.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<br>
+<p id="notice"><%= notice %></p>
+<%= form_with url: "/inquiries/create" , scope: :inquiry, local: true do |form| %>
+  <%= form.hidden_field :house_id , :value => @house_id %>
+  <%= form.hidden_field :house_hunter_id , :value => @house_hunter_id %>
+<br>
+  <%= form.label :subject %>
+  <%= form.text_field :subject %>
+  <br>
+  <br>
+  <%= form.label :message_content %>
+  <%= form.text_area :message_content %>
+  <br>
+  <br>
+  <br>
+  <%= submit_tag("Submit") %>
+<% end %>
+<br>
+<br>
+<br>
+<%= link_to 'Go back to homepage ', homepage_path %>

@@ -1,0 +1,60 @@
+<h1> Sign up as realtor</h1>
+
+
+<head>
+  <style>
+    #notice {
+      color: red;
+      font-size: large;
+    }
+  </style>
+</head>
+<p id="notice"> <%=notice %></p>
+
+<br>
+<%= form_with url: "/realtors/create" , scope: :realtor , local: true do |form| %>
+
+
+  <% if @realtor.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@realtor.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @realtor.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= form.label :email %>
+  <%= form.text_field :email %>
+  <br>
+  <br>
+  <%= form.label :password %>
+  <%= form.password_field :password %>
+  <br>
+  <br>
+  <%= form.label :confirm_password %>
+  <%= form.password_field :confirm_password %>
+  <br>
+  <br>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <br>
+  <br>
+  <%= form.label :phone %>
+  <%= form.text_field :phone %>
+  <br>
+  <br>
+  <%= form.label :what_is_your_first_pet_name_? %>
+  <%= form.text_field :secret_question %>
+  <br>
+  <br>
+  <%= submit_tag("Register") %>
+  <br>
+  <br>
+  <%= link_to "Go back ", root_url %>
+
+<% end %>

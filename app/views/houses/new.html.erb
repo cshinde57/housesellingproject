@@ -1,0 +1,65 @@
+<h1> List a house </h1>
+
+<%= form_with url: "/houses/create" , scope: :house , local: true do |form| %>
+
+  <% if @house.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@house.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @house.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <br>
+  <%= form.label :location %>
+  <%= form.text_area :location %>
+  <br>
+  <br>
+  <br>
+  <%= form.label :square_footage %>
+  <%= form.text_field :square_footage %>
+  <br>
+  <br>
+  <%= form.label :year_built %>
+  <%= form.text_field :year_built %>
+  <br>
+  <br>
+  <%= form.label :style %>
+  <%= form.text_field :style %>
+  <br>
+  <br>
+  <%= form.label :price %>
+  <%= form.text_field :price %>
+  <br>
+  <br>
+  <%= form.label :number_of_floors %>
+  <%= form.text_field :number_of_floors %>
+  <br>
+  <br>
+  <%= form.label :basement %> :::::::::
+  <%= form.label :yes %>
+  <%= form.radio_button :basement, 'yes', :checked => true %>
+  <%= form.label :no %>
+  <%= form.radio_button :basement, 'no' %>
+  <br>
+  <br>
+  <%= form.label :current_house_owner %>
+  <%= form.text_area :current_house_owner %>
+  <br>
+  <br>
+  <%= form.label :contact_info_of_realtor %>
+  <%= form.text_area :contact_info_of_realtor %>
+  <br>
+  <br>
+  <br>
+  <%= submit_tag("Post the house") %>
+  <br>
+  <br>
+  <%= link_to 'Go back to homepage', '/homepage' %> |
+<% end %>

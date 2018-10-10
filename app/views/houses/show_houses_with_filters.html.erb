@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+#notice {
+      color: green;
+      font-size: large;
+    }
+* {
+  box-sizing: border-box;
+}
+
+#myInput, #myInp, #myIn {
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myTable {
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+#myTable th, #myTable td {
+  text-align: left;
+  padding: 12px;
+}
+
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  background-color: #f1f1f1;
+}
+
+  </style>
+</head>
+<h1>All houses</h1>
+<br>
+<br>
+<p id="notice"><%= notice %></p>
+
+
+<input type="text" id="myInput" onkeyup="myLocation()" placeholder="Location.." title="Type in a location">
+<input type="text" id="myInp" onkeyup="mySquare()" placeholder="Square Footage.." title="Type in a Square Footage">
+<input type="text" id="myIn" onkeyup="myPrice()" placeholder="Price.." title="Type in a Price">
+
+<table id="myTable">
+  <tr class="header">
+    <th>Location</th>
+    <th>Square footage</th>
+    <th>Year built</th>
+    <th>Style</th>
+    <th>Price</th>
+    <th>Number of floors </th>
+    <th>Basement</th>
+    <th>Current house owner</th>
+    <th>Contact information of realtor</th>
+    <th></th>
+  </tr>
+
+  <% if !@houses.nil? then @houses.each do |house| %>
+      <tr>
+        <td><%= house.location %></td>
+        <td><%= house.square_footage %></td>
+        <td><%= house.year_built %></td>
+        <td><%= house.style %></td>
+        <td><%= house.price %></td>
+        <td><%= house.number_of_floors %></td>
+        <td><%= house.basement %></td>
+        <td><%= house.current_house_owner %></td>
+        <td><%= house.contact_info_of_realtor %></td>
+        <td><%= link_to 'Show', house %> <br>
+        <%= link_to 'Add to Interest List', "/add_to_interest_list/"+(house.id.to_s) %>
+        <%= link_to 'Inquiry', "/inquiries/new/"+(house.id.to_s) %>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
+
+<br />
+
+<%= link_to 'Go back to homepage ', homepage_path %>
+
+<script>
+function myLocation() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+
+function mySquare() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInp");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+
+function myPrice() {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myIn");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[4];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
+
+</body>
+</html>

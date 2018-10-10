@@ -1,0 +1,29 @@
+
+
+<table>
+  <tr>
+    <th> Name </th>
+    <th>Email </th>
+    <th>Phone</th>
+    <th>User type </th>
+    <th></th>
+
+  </tr>
+
+  <% if !@realtor.nil? then @realtor.each do |realtor| %>
+      <tr>
+        <td><%= realtor.name %></td>
+        <td><%= realtor.email %></td>
+        <td><%= realtor.phone %></td>
+        <td> Realtor </td>
+        <td><%= link_to 'Show', realtor %> || </td>
+        <td><%= link_to 'Edit', edit_realtor_url(realtor) %> || </td>
+        <td><%= link_to 'Delete', realtor, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
+
+<br />
+
+

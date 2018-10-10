@@ -1,0 +1,45 @@
+<%= render "banner" %>
+
+<head>
+  <style>
+    #notice {
+      color: red;
+      font-size: large;
+    }
+    #main {
+      text-indent: 30px;
+      color: darkblue;
+    }
+  </style>
+</head>
+<p id="notice"> <%=notice %></p>
+<%= form_with url: "/users/check_credentials"  do |form| %>
+  <p id="main">
+  <%= form.label :email %>
+  <%= form.text_field :email %>
+  <br>
+  <br>
+  <%= form.label :password %>
+  <%= form.password_field :password %>
+  <br>
+
+  <br>
+  <%= form.radio_button :usertype, 'realtor', :checked => true %>
+  <%= form.label :realtor %>
+  <%= form.radio_button :usertype, 'househunter' %>
+  <%= form.label :house_hunter %>
+  <%= form.radio_button :usertype, 'admin'%>
+  <%= form.label :admin %>
+  <br>
+  <br> <%= link_to "Forgot your password ? Click here to reset ", '/users/forgot_password_form' %>
+    <br>
+    <br>
+           <%= submit_tag("Login") %>
+  <br>
+  <br>
+  <%= link_to "Sign up as Realtor", '/realtors/new' %>
+  <br>
+  <br>
+  <%= link_to "Sign up as House Hunter", '/house_hunters/new' %>
+  </p>
+<% end %>

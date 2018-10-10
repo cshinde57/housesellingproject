@@ -1,0 +1,43 @@
+<h1>Listing Real estate companies</h1>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Company name :</b>
+  <%= @company.company_name %>
+</p>
+
+<p>
+  <b>Website</b>
+  <%= @company.website %>
+</p>
+
+<p>
+  <b>Address</b>
+  <%= @company.address %>
+</p>
+<p>
+  <b>Size of company</b>
+  <%= @company.size_of_company %>
+</p>
+<p>
+  <b>Founded year</b>
+  <%= @company.founded_year %>
+</p>
+<p>
+  <b>Revenue</b>
+  <%= @company.revenue %>
+</p>
+<p>
+  <b>Synopsis</b>
+  <%= @company.synopsis %>
+</p>
+
+
+<br />
+
+<%= link_to 'Go back to homepage', '/homepage' %> |
+<br>
+<% if session[:user_type] =="admin"%>
+<%= link_to 'Edit', edit_real_estate_company_path(@company) %> |
+<%end %>

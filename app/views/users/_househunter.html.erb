@@ -1,0 +1,29 @@
+
+<table>
+  <tr>
+    <th> Name </th>
+    <th>Email </th>
+    <th>Phone</th>
+    <th>Preferred contact method</th>
+    <th>User type </th>
+
+  </tr>
+
+  <% if !@househunter.nil? then @househunter.each do |househunter| %>
+      <tr>
+        <td><%= househunter.name %></td>
+        <td><%= househunter.email %></td>
+        <td><%= househunter.phone %></td>
+        <td><%= househunter.contact_method %></td>
+        <td> || House Hunter ||  </td>
+        <td><%= link_to 'Show', househunter %> || </td>
+        <td><%= link_to 'Edit', edit_house_hunter_url(househunter) %> || </td>
+        <td><%= link_to 'Delete', househunter, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
+
+<br />
+
+<%= link_to 'Go back to homepage ', homepage_path %>

@@ -1,0 +1,25 @@
+<h1>All Inquiries</h1>
+<p id="notice"><%= notice %></p>
+<table>
+  <tr>
+    <th> Subject </th>
+    <th>  Message content </th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% if !@inquiries.nil? then @inquiries.each do |inquiry| %>
+      <tr>
+        <td><%= inquiry.subject %></td>
+        <td><%= inquiry.message_content %></td>
+        <td><%= link_to 'Show', inquiry %></td>
+          <td><%= link_to 'Edit', edit_inquiry_path(inquiry) %></td>
+          <td><%= link_to 'Delete', inquiry, method: :delete, data: { confirm: 'Are you sure?' }  %></td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
+
+<br />
+
+<%= link_to 'Go back to homepage ', homepage_path %>

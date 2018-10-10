@@ -1,0 +1,56 @@
+<h1>-------Sign up as House Hunter---------</h1>
+
+<%= form_with url: "/house_hunters/create" , scope: :house_hunter , local: true do |form| %>
+
+  <% if @house_hunters.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@house_hunters.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @house_hunters.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= form.label :email %>
+  <%= form.text_field :email %>
+  <br>
+  <br>
+  <%= form.label :password %>
+  <%= form.password_field :password %>
+  <br>
+  <br>
+  <%= form.label :confirm_password %>
+  <%= form.password_field :confirm_password %>
+  <br>
+  <br>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <br>
+
+  <br>
+
+  <%= form.label :phone %>
+  <%= form.text_field :phone %>
+  <br>
+  <br>
+  <%= form.label :what_is_your_first_pet_name_? %>
+  <%= form.text_field :secret_question %>
+  <br>
+  <br>
+  <%= form.label :preferred_contact_method %>
+  <%= form.select :contact_method, ['Text', 'Phone' , 'Email']%>
+  <br>
+  <br>
+  <%= submit_tag("Register") %>
+  <br>
+  <br>
+  <br>
+  <br>
+  <%= link_to "Go back ", root_url %>
+
+
+<% end %>

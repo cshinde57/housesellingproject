@@ -1,0 +1,53 @@
+<h1> --------Create Real estate Company----- </h1>
+
+<% if @company.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@company.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+    <ul>
+      <% @company.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_with url: "/real_estate_companies/create" , scope: :company ,  local: true do |form| %>
+
+  <br>
+  <%= form.label :company_name %>
+  <%= form.text_field :company_name %>
+  <br>
+  <br>
+  <%= form.label :website %>
+  <%= form.text_field :website %>
+  <br>
+  <br>
+  <%= form.label :address %>
+  <%= form.text_area :address %>
+  <br>
+  <br>
+  <%= form.label :size_of_company %>
+  <%= form.text_field :size_of_company %>
+  <br>
+  <br>
+  <%= form.label :founded_year %>
+  <%= form.text_field :founded_year %>
+  <br>
+  <br>
+  <%= form.label :revenue %>
+  <%= form.text_field :revenue %>
+  <br>
+  <br>
+  <%= form.label :synopsis %>
+  <%= form.text_area :synopsis %>
+
+  <br>
+  <br>
+  <br>
+  <%= submit_tag("Create company") %>
+  <br />
+  <br>
+  <br>
+  <%= link_to 'Go back to homepage', '/homepage' %> |
+<% end %>

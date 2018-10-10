@@ -1,0 +1,42 @@
+<h1> Edit Profile : House Hunter</h1>
+
+<%= form_with url: "/house_hunters/"+(@house_hunter.id).to_s,  scope: :house_hunter , local: true ,  method: 'PATCH' do |form| %>
+
+
+  <% if @house_hunter.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@house_hunter.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @house_hunter.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <br>
+  <br>
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <br>
+  <br>
+  <%= form.label :phone %>
+  <%= form.text_field :phone %>
+  <br>
+  <br>
+  <%= form.label :preferred_contact_method %>
+  <%= form.select :contact_method, ['Text', 'Phone' , 'Email']%>
+  <br>
+  <br>
+  <%= form.label :what_is_your_first_pet_name_? %>
+  <%= form.text_field :secret_question %>
+  <br>
+  <br>
+  <%= submit_tag("Update") %>
+  <br>
+  <br>
+
+<%= link_to 'Go back to homepage', '/homepage' %>
+<% end %>
